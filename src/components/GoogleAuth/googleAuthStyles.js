@@ -7,15 +7,7 @@ export const Wrapper = styled.div`
     justify-content: flex-end;
   }
 `
-export const AuthBtn = styled(Button)`
-  &&& {
-    color: #fefefe;
-    background: transparent;
-    border: none;
-    font-size: 1.4rem;
-  }
-`
-export const UserBtn = styled(Button)`
+export const Btn = styled(Button)`
   &&& {
     color: #fefefe;
     background: transparent;

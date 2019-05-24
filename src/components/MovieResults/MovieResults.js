@@ -4,11 +4,26 @@ import {findMovie} from '../../redux/getMovies'
 import { Card, Icon, Image } from 'semantic-ui-react'
 import { StyledHeader, InnerWrapper, OuterWrapper } from './movieResultsStyles';
 import BasicSearch from '../../shared/BasicSearch/BasicSearch';
+import axios from 'axios'
+import firebase from 'firebase'
 
 const MovieResults = ({results})=> {
 
-  const handleFavorite = () => {
-
+  const handleFavorite = result => {
+    const user = firebase.auth().currentUser
+    user && user.getIdToken(/* forceRefresh */ true).then(
+      idToken => console.log(idToken, user)
+    ).catch(
+      err => console.log(err)
+    )
+    // axios({
+    //   method: 'get',
+    //   url: 'https://firebase.googleapis.com/$discovery/rest?version=v1beta1'
+    // }).then(
+    //   res => console.log(res)
+    // ).catch(
+    //   err => console.log(err)
+    // )
   }
 
   console.log(results);
@@ -27,7 +42,7 @@ const MovieResults = ({results})=> {
             <Card.Header>
               <StyledHeader>
                 <span>{result.title ? result.title : result.original_name}</span>
-                <Icon name={`star outline`} onClick={handleFavorite} />
+                <Icon name={`star outline`} onClick={()=>handleFavorite(result)} />
               </StyledHeader>
             </Card.Header>
             <Card.Meta>
