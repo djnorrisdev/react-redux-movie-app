@@ -57,26 +57,26 @@ export const userLogin = () => dispatch => {
       const authId = result.user.uid
       localStorage.setItem('jwt', token)
       console.log(result)
-      firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(
-        idToken => {
-        const url = `https://redux-movie-app.firebaseio.com/users.json?auth=${idToken}`
-      axios({
-          method: 'patch',
-          url: url,
-          data: {
-            [authId]: {
-            displayName: result.user.displayName,
-            email: result.user.email
-            }
-          }
-        }).then(
-          res => console.log(res)
-        ).catch(
-          err => console.log(err)
-        )}
-      ).catch(
-        err => console.log(err)
-      )
+      // firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(
+      //   idToken => {
+      //   const url = `https://redux-movie-app.firebaseio.com/users.json?auth=${idToken}`
+      // axios({
+      //     method: 'patch',
+      //     url: url,
+      //     data: {
+      //       [authId]: {
+      //       displayName: result.user.displayName,
+      //       email: result.user.email
+      //       }
+      //     }
+      //   }).then(
+      //     res => console.log(res)
+      //   ).catch(
+      //     err => console.log(err)
+      //   )}
+      // ).catch(
+      //   err => console.log(err)
+      // )
       
     })
 		.catch(error => {
