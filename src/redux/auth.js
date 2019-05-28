@@ -17,7 +17,6 @@ const FETCH_USER = 'FETCH_USER';
 const userReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case FETCH_USER: {
-			console.log(action, state);
 			return {
 				...state,
         user: action.payload,

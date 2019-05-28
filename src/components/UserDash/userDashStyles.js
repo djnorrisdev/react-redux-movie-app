@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
     font-size: 3rem;
     letter-spacing: 0.1rem;
     margin: 0 0 4rem;
+    text-align: center;
   }
   
 `

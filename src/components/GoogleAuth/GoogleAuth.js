@@ -30,7 +30,7 @@ const GoogleAuth = props => {
 	return <Wrapper>{renderButtons()}</Wrapper>;
 };
 const mapStateToProps = ({ auth: { isAuthenticated } }) => {
-	console.log(isAuthenticated);
+	// console.log(isAuthenticated);
 	return {
 		isAuthenticated,
 	};
