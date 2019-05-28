@@ -6,6 +6,7 @@ import { StyledHeader, InnerWrapper, OuterWrapper } from './movieResultsStyles';
 import BasicSearch from '../../shared/BasicSearch/BasicSearch';
 import axios from 'axios';
 import firebase from 'firebase';
+import SearchTitle from '../../shared/SearchTitle/SearchTitle';
 
 class MovieResults extends Component {
 	constructor(props) {
@@ -47,9 +48,11 @@ class MovieResults extends Component {
 	render() {
 		const results = this.props.results;
 		const resArr = Object.values(results);
-		// console.log(resArr)
+
 		return (
 			<OuterWrapper>
+        {results === {} ? <SearchTitle /> : null}
+        {console.log(results)}
 				<BasicSearch />
 				<InnerWrapper>
 					{results === {}

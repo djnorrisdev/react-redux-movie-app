@@ -26,7 +26,9 @@ const UserDash = props => {
 					axios({
 						method: 'delete',
 						url: url
-					})
+					}).then(() => {
+              props.getFavorites();
+            }, [])
 				})
 				.catch(err => console.log(err));
   }

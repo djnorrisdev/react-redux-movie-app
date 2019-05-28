@@ -5,9 +5,9 @@ import GoogleAuth from '../../../components/GoogleAuth/GoogleAuth';
 class Header extends Component {
 	
 	render() {
-    console.log(this.props);
 		return (
 			<Wrapper>
+        <h1>ShowFindr</h1>
         <GoogleAuth />
 			</Wrapper>
 		);
