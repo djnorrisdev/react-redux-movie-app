@@ -1,9 +1,8 @@
 import axios from 'axios'
+
 //Initial State
 const initialState = {
-  value: {
-    results: {}
-  }
+    results: [] 
 };
 
 const MOVIE = 'MOVIE'
@@ -12,10 +11,10 @@ const MOVIE = 'MOVIE'
 const reducer = (state=initialState, action) => {
   switch (action.type) {
     case MOVIE: {
-      console.log(action, state)
+      const { results } = action.payload
       return {
         ...state,
-        value: action.payload
+        results
       }
     }
     default:
@@ -38,7 +37,6 @@ export const findMovie = val => async dispatch => {
       query: val
     }
   })
-  console.log(response);
   dispatch({
     type: MOVIE,
     payload: response.data

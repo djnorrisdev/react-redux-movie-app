@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { map } from 'lodash/map'
 import { findMovie } from '../../redux/getMovies';
 import { Card, Icon, Image } from 'semantic-ui-react';
 import { StyledHeader, InnerWrapper, OuterWrapper } from './movieResultsStyles';
@@ -16,7 +17,6 @@ class MovieResults extends Component {
 
 	handleFavorite = result => {
 		const user = firebase.auth().currentUser;
-		console.log(user);
 		user &&
 			user
 				.getIdToken(/* forceRefresh */ true)
@@ -46,18 +46,14 @@ class MovieResults extends Component {
 				.catch(err => console.log(err));
 	};
 	render() {
-		const results = this.props.results;
-		const resArr = Object.values(results);
+		const { results } = this.props;
 
 		return (
 			<OuterWrapper>
-        {results === {} ? <SearchTitle /> : null}
-        {console.log(results)}
+        {results ? <SearchTitle /> : null}
 				<BasicSearch />
 				<InnerWrapper>
-					{results === {}
-						? ''
-						: resArr.map((result, i) => (
+          {results.map((result, i) => (
 								<div key={i}>
 									<Card>
 										<Image
@@ -105,7 +101,7 @@ class MovieResults extends Component {
 		);
 	}
 }
-const mapStateToProps = ({ getMovies: { value } }) => {
-	return { results: value.results };
+const mapStateToProps = ({ getMovies: { results } }) => {
+	return { results };
 };
 export default connect(mapStateToProps)(MovieResults);
