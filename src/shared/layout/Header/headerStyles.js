@@ -17,5 +17,6 @@ export const Wrapper = styled.div`
     letter-spacing: 0.7px;
     color: #fafafa;
     font-family: 'Lobster', cursive;
+    cursor: pointer;
   }
 `

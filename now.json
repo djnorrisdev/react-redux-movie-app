@@ -1,0 +1,44 @@
+{
+  "version": 2,
+  "name": "redux-movie-app",
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": { "distDir": "build" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "headers": { "cache-control": "s-maxage=31536000,immutable" },
+      "dest": "/static/$1"
+    },
+    { "src": "/favicon.ico", "dest": "/favicon.ico" },
+    { "src": "/asset-manifest.json", "dest": "/asset-manifest.json" },
+    { "src": "/manifest.json", "dest": "/manifest.json" },
+    { "src": "/precache-manifest.(.*)", "dest": "/precache-manifest.$1" },
+    {
+      "src": "/service-worker.js",
+      "headers": { "cache-control": "s-maxage=0" },
+      "dest": "/service-worker.js"
+    },
+    {
+      "src": "/(.*)",
+      "headers": { "cache-control": "s-maxage=0" },
+      "dest": "/index.html"
+    }
+  ],
+  "build": {
+    "env": {
+      "REACT_APP_API_KEY": "@react-app-api-key",
+      "REACT_APP_FIREBASE_API_KEY": "@react-app-firebase-api-key",
+      "REACT_APP_AUTH_DOMAIN": "@react-app-auth-domain",
+      "REACT_APP_DATABASE_URL": "@react-app-database-url",
+      "REACT_APP_PROJECT_ID": "@react-app-project-id",
+      "REACT_APP_STORAGE_BUCKET": "@react-app-storage-bucket",
+      "REACT_APP_MESSAGE_SENDER_ID": "@react-app-message-sender-id",
+      "REACT_APP_APP_ID":"@react-app-app-id"
+    }
+  }
+}

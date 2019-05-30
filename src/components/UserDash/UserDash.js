@@ -79,7 +79,6 @@ const UserDash = props => {
 	);
 };
 const mapStateToProps = ({favoritesList}) => {
-  console.log(favoritesList);
 	return {
 		items: favoritesList
 	};
