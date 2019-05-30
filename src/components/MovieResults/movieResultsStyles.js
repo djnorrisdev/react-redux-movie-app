@@ -1,6 +1,7 @@
 import styled from 'styled-components/macro';
 import { rem } from 'polished';
 import { Card } from 'semantic-ui-react'
+import { media } from '../App/appStyles'
 
 export const OuterWrapper = styled.div`
   display: flex;
@@ -17,6 +18,12 @@ export const InnerWrapper = styled.div`
     box-shadow: none;
     min-height: 100%;
   }
+  ${media.tablet`
+    grid-template-columns: 1fr 1fr;
+  `}
+  ${media.phone`
+    grid-template-columns: 1fr;
+  `}
 `
 export const StyledHeader = styled(Card.Header)`
 &&& {

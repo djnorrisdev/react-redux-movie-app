@@ -6,5 +6,5 @@ import favoritesList from './favoritesList'
 export default combineReducers({
   getMovies,
   auth,
-  favoritesList
+  favoritesList,
 });

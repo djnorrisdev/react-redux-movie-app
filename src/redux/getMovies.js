@@ -1,9 +1,8 @@
 import axios from 'axios'
 //Initial State
 const initialState = {
-  value: {
-    results: {}
-  }
+  results: [],
+  initial: true 
 };
 
 const MOVIE = 'MOVIE'
@@ -12,10 +11,11 @@ const MOVIE = 'MOVIE'
 const reducer = (state=initialState, action) => {
   switch (action.type) {
     case MOVIE: {
-      console.log(action, state)
+      const { results } = action.payload
       return {
         ...state,
-        value: action.payload
+        results,
+        initial: false
       }
     }
     default:

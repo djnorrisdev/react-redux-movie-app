@@ -11,6 +11,7 @@ import MovieResults from '../MovieResults/MovieResults';
 import { Wrapper } from './appStyles'
 import UserDash from '../UserDash/UserDash';
 import {fetchUser} from '../../redux/auth'
+import DetailedView from '../DetailedView/DetailedView';
 
 // const PrivateRoute = ({ component: Component, ...rest }) => (
 //   <Route {...rest} render = { props => (
@@ -21,7 +22,6 @@ const loggedInView = () => (<UserDash />)
 const loggedOutView = () => (<MovieResults />)
 
 const App = props => {
-  const isloggedIn = props.isAuthenticated
   useEffect(()=>{
     props.fetchUser()
   },[])
@@ -31,6 +31,7 @@ const App = props => {
         <Header />
         <Switch>
           <Route exact path="/" component={MovieResults} />
+          <Route path ='/detailed-view/:id' component={DetailedView} />
           <Route path='/user-dash' component={props.isAuthenticated ? loggedInView : loggedOutView} />
         </Switch>
       </Wrapper>
