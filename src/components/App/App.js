@@ -19,7 +19,7 @@ const loggedOutView = () => (<MovieResults />)
 const App = props => {
   useEffect(()=>{
     props.fetchUser()
-  })
+  }, [])
   return (
     <Router>
       <Wrapper>

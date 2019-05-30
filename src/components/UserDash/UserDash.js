@@ -9,7 +9,7 @@ import axios from 'axios'
 const UserDash = props => {
 	useEffect(() => {
 		props.getFavorites();
-  });
+  }, []);
   const formatList = props.items.favorites && Object.entries(props.items.favorites)
 
   const handleDelete = (ident) => {
