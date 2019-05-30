@@ -40,6 +40,5 @@
       "REACT_APP_MESSAGE_SENDER_ID": "@react-app-message-sender-id",
       "REACT_APP_APP_ID":"@react-app-app-id"
     }
-  },
-  "alias": ["redux-movie-app-djnorris.com"]
+  }
 }
