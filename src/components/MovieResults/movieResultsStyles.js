@@ -1,5 +1,4 @@
 import styled from 'styled-components/macro';
-import { rem } from 'polished';
 import { Card } from 'semantic-ui-react'
 import { media } from '../App/appStyles'
 

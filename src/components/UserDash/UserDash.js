@@ -3,18 +3,18 @@ import { connect } from 'react-redux';
 import { getFavorites } from '../../redux/favoritesList';
 import { StyledItem, Wrapper } from './userDashStyles';
 import { Icon, Item, Loader } from 'semantic-ui-react';
-import firebase from 'firebase'
+import {authRef} from '../../firebase'
 import axios from 'axios'
 
 const UserDash = props => {
 	useEffect(() => {
 		props.getFavorites();
-  }, []);
+  });
   const formatList = props.items.favorites && Object.entries(props.items.favorites)
 
   const handleDelete = (ident) => {
     console.log(ident);
-    const user = firebase.auth().currentUser;
+    const user = authRef.currentUser;
 		console.log(user);
 		user &&
 			user

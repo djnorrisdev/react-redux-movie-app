@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
-  Redirect
+  Switch
 } from 'react-router-dom'
 import { connect } from "react-redux";
 import Header from '../../shared/layout/Header/Header';
@@ -13,18 +12,14 @@ import UserDash from '../UserDash/UserDash';
 import {fetchUser} from '../../redux/auth'
 import DetailedView from '../DetailedView/DetailedView';
 
-// const PrivateRoute = ({ component: Component, ...rest }) => (
-//   <Route {...rest} render = { props => (
-//     props.isAuthenticated ? <Component {...props} /> : <Redirect to="/" />
-//   )} />
-// )
+
 const loggedInView = () => (<UserDash />)
 const loggedOutView = () => (<MovieResults />)
 
 const App = props => {
   useEffect(()=>{
     props.fetchUser()
-  },[])
+  })
   return (
     <Router>
       <Wrapper>

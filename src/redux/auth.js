@@ -1,6 +1,4 @@
 import { authRef, provider } from '../firebase';
-import firebase from 'firebase'
-import axios from 'axios'
 
 //Initial State
 const initialState = {
@@ -9,8 +7,7 @@ const initialState = {
 	isAuthenticated: false,
 };
 
-const LOGIN = 'LOGIN';
-const LOGOUT = 'LOGOUT';
+
 const FETCH_USER = 'FETCH_USER';
 
 //Reducers
@@ -53,30 +50,7 @@ export const userLogin = () => dispatch => {
 		.signInWithPopup(provider)
 		.then(result => {
       const token = result.credential.idToken
-      const authId = result.user.uid
       localStorage.setItem('jwt', token)
-      console.log(result)
-      // firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(
-      //   idToken => {
-      //   const url = `https://redux-movie-app.firebaseio.com/users.json?auth=${idToken}`
-      // axios({
-      //     method: 'patch',
-      //     url: url,
-      //     data: {
-      //       [authId]: {
-      //       displayName: result.user.displayName,
-      //       email: result.user.email
-      //       }
-      //     }
-      //   }).then(
-      //     res => console.log(res)
-      //   ).catch(
-      //     err => console.log(err)
-      //   )}
-      // ).catch(
-      //   err => console.log(err)
-      // )
-      
     })
 		.catch(error => {
 			console.log(error);

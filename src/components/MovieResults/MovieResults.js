@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { findMovie } from '../../redux/getMovies';
 import { Card, Icon, Image } from 'semantic-ui-react';
 import { StyledHeader, InnerWrapper, OuterWrapper } from './movieResultsStyles';
 import BasicSearch from '../../shared/BasicSearch/BasicSearch';
 import axios from 'axios';
-import firebase from 'firebase';
+import {authRef} from '../../firebase'
 import SearchTitle from '../../shared/SearchTitle/SearchTitle';
 
 class MovieResults extends Component {
@@ -16,8 +15,7 @@ class MovieResults extends Component {
 	}
 
 	handleFavorite = result => {
-		const user = firebase.auth().currentUser;
-		console.log(user);
+		const user = authRef.currentUser;
 		user &&
 			user
 				.getIdToken(/* forceRefresh */ true)
@@ -57,6 +55,10 @@ class MovieResults extends Component {
 			<OuterWrapper>
 				{initial ? <SearchTitle /> : null}
 				<BasicSearch />
+        {initial ? 
+          <div style={{marginTop: `3rem`, color:`#fafafa`, fontSize:`2rem`}}>
+            <h2>Search To Get Started</h2>
+          </div> : null}
 				<InnerWrapper>
 					{results.map((result, i) => (
 						<div key={i}>

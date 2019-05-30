@@ -38,7 +38,6 @@ export const findMovie = val => async dispatch => {
       query: val
     }
   })
-  console.log(response);
   dispatch({
     type: MOVIE,
     payload: response.data

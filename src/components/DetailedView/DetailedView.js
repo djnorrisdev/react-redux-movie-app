@@ -1,17 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { Wrapper } from './detailedViewStyles';
-import { Card, Icon, Image } from 'semantic-ui-react';
+import { Icon, Image } from 'semantic-ui-react';
 import axios from 'axios';
-import firebase from 'firebase';
-import FavModal from '../FavModal/FavModal';
+import {authRef} from '../../firebase'
+import { addedFav } from '../../redux/favoritesList'
+import FavModal from '../../shared/FavModal/FavModal'
 
 const DetailedView = props => {
-	const { isAuthenticated, results } = props;
+	const { added, results } = props;
 	const id = props.location.state.id;
 
 	const handleAdd = result => {
-		const user = firebase.auth().currentUser;
+		const user = authRef.currentUser;
 		user &&
 			user
 				.getIdToken(/* forceRefresh */ true)
@@ -31,19 +33,14 @@ const DetailedView = props => {
 						},
 					})
 						.then(res => {
-							res &&
-								this.setState({
-									[result.id]: true,
-								});
+              const isOpen = true
+							props.addedFav(isOpen)
 						})
 						.catch(err => console.log(err));
 				})
 				.catch(err => console.log(err));
-  };
-  
-  const handleNoAuth = () => (
-    <FavModal />
-  )
+	};
+
 
 	return (
 		<>
@@ -71,18 +68,27 @@ const DetailedView = props => {
 								</span>
 							</h3>
 						</div>
-						<button onClick={isAuthenticated ? () => handleAdd(item): handleNoAuth}>
+						<button onClick={() => handleAdd(item)}>
 							<Icon name='plus' />
 							Add To Favorites
 						</button>
+            <button onClick={() => props.history.goBack()}>
+							<Icon name='long arrow alternate left' />
+							Back to Results
+						</button>
 					</Wrapper>
 				) : null
-			)}
+      )}
+      {added ? <FavModal /> : null}
 		</>
 	);
 };
 
-const mapStateToProps = ({ getMovies: { results }, auth: {isAuthenticated} }) => {
-	return { results, isAuthenticated };
+const mapStateToProps = ({
+	getMovies: { results },
+  auth: { isAuthenticated },
+  favoritesList: {added}
+}) => {
+	return { results, isAuthenticated, added };
 };
-export default connect(mapStateToProps)(DetailedView);
+export default withRouter(connect(mapStateToProps, { addedFav })(DetailedView));

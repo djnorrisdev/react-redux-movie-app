@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import { BurgerMenu, Btn, NavMenu, Wrapper } from './googleAuthStyles';
-import { Dropdown, Icon, Menu, Segment } from 'semantic-ui-react';
+import { Dropdown, Menu } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { userLogin, userLogout } from '../../redux/auth';
 
@@ -30,9 +30,9 @@ const GoogleAuth = props => {
 					<Menu attached='top'>
 						<Dropdown
 							item
-							icon='wrench'
+							icon='bars'
 							simple
-							style={{ color: `#fafafa`, background: `transparent` }}
+							style={{ color: `#fafafa`, background: `transparent`, fontSize: `2rem` }}
 						>
 							<Dropdown.Menu>
 								{props.isAuthenticated ? (

@@ -2,14 +2,19 @@ import styled from 'styled-components/macro';
 import { Icon } from 'semantic-ui-react';
 
 export const Wrapper = styled.div`
-  width: 100%;
   height: 50%;
-  background: #929292;
+  background: #000000e6;
   position: fixed;
-  top: 43%;
-  left: 0;
   text-align: center;
   color: #ffffff;
+  top: 0;
+  right: 50%;
+  translateX: 50%;
+  transform: translate(50%,50%);
+  border-radius: 6px;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
 `
 
 export const StyledIcon = styled(Icon)`
