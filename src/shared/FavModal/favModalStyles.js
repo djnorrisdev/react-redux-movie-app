@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
   color: #ffffff;
   top: 0;
   right: 50%;
-  translateX: 50%;
   transform: translate(50%,50%);
   border-radius: 6px;
   padding: 1rem 2rem;
@@ -22,4 +21,5 @@ export const StyledIcon = styled(Icon)`
   top: 1rem;
   right: 1rem;
   color: #ffffff;
+  cursor: pointer;
 `
