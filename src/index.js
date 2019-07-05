@@ -2,12 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
+import reducers from './redux/reducer';
+import thunk from 'redux-thunk';
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 import 'normalize.css';
 import './index.css';
 import 'semantic-ui-css/semantic.min.css';
 import App from './components/App/App';
-import reducers from './redux/reducer';
-import thunk from 'redux-thunk';
 
 require('dotenv').config()
 
